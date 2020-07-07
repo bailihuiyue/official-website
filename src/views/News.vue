@@ -101,7 +101,7 @@ export default {
     //height: 1600px;
 
     &-content {
-      width: 1240px;
+      width: 90%;
       //height: 1600px;
       margin: 0 auto;
       background-color: #fff;
@@ -217,6 +217,36 @@ export default {
   }
   .text-decoration {
     text-decoration: none;
+  }
+}
+.mobile {
+  .news-section-content {
+    .content-nav {
+      width: 200px;
+      height: 30px;
+      bottom: 18px;
+    }
+  }
+  .content-nav-item{
+    width: auto;
+    .item-list{
+      width: 100%;
+      margin: 0;
+      margin-bottom: 5px;
+      border: none;
+      border-bottom: 1px solid #15669e;
+      .item-img{
+        width: 90%;
+      }
+      .item-list-title{
+        width: auto;
+        border-left:none;
+      }
+    }
+    .item-list-content{
+      overflow: auto;
+      text-indent: 2em;
+    }
   }
 }
 </style>

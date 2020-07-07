@@ -67,4 +67,12 @@ export default {
     width: 100%;
   }
 }
+.mobile {
+  .banner{
+    height: 100px;
+  }
+  .banner-title{
+    line-height: 100px;
+  }
+}
 </style>

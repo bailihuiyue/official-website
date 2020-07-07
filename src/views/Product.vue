@@ -281,4 +281,52 @@ export default {
   font-size: 30px;
   padding: 10px 0;
 }
+.mobile {
+  .product-content {
+    width: auto;
+    .p-video {
+      width: auto;
+    }
+    .lacking {
+      .lacking-bottom {
+        padding: 10px;
+        .lacking-bottom-item {
+          .lacking-bottom-item-img {
+            width: 100px;
+            height: 100px;
+          }
+          p {
+            width: 100px;
+          }
+        }
+      }
+    }
+    .target {
+      .target-img {
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .modular {
+      .modular-content {
+        padding: 0;
+        display: block;
+        .modular-content-center {
+          width: auto;
+          height: auto;
+          text-align: center;
+          img {
+            width: 200px;
+          }
+        }
+        .modular-content-same {
+          // width: 100px;
+          // height: 100px;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
 </style>

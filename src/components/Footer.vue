@@ -21,7 +21,7 @@
           <span>平台目标</span>
           <span>功能模块</span>
         </li>
-        <li>
+        <li class="contact">
           <p>联系我们</p>
           <span>邮箱：kejianlml@163.com</span>
           <span>电话：021-55802368</span>
@@ -85,6 +85,39 @@ export default {};
     span {
       color: #fff;
       line-height: 30px;
+    }
+  }
+}
+.mobile {
+  .footer {
+    height: auto;
+    .footer-content {
+      width: 100%;
+      display: block;
+      .content-nav {
+        display: block;
+        li {
+          display: block;
+          width: 90%;
+          margin: auto;
+          padding: 0 10px;
+          span {
+            padding: 5px;
+          }
+        }
+        .contact {
+          span {
+            display: block;
+          }
+        }
+      }
+      img {
+        margin: auto;
+        display: block;
+      }
+    }
+    .copyright{
+      text-align: center;
     }
   }
 }

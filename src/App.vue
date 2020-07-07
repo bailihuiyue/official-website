@@ -4,12 +4,13 @@
       <el-header :style="{width:isMobile?'':'80%'}">
         <div class="logo">
           <i class="el-icon-s-unfold" v-if="isMobile" @click="handleDisplayDrawer(true)"></i>
-          <img src="./assets/img/toplogo.png" alt />
+          <div style="flex:1;overflow:hidden">
+            <img src="./assets/img/toplogo.png" alt />
+          </div>
         </div>
         <Menu mode="horizontal" :handleSelect="handleSelect" v-if="!isMobile" />
       </el-header>
       <el-drawer
-        v-if="isMobile"
         :visible="showDrawer"
         direction="ltr"
         :show-close="false"
@@ -40,16 +41,16 @@ export default {
   data() {
     return {
       defaultActive: "/",
-      isShow: false,
+      isShow: true,
       isMobile: device.mobile(),
-      showDrawer: device.mobile()
+      showDrawer: false
     };
   },
-  created() {
-    window.onresize = () => {
-      window.location.reload();
-    };
-  },
+  // created() {
+  //   window.onresize = () => {
+  //     window.location.reload();
+  //   };
+  // },
   methods: {
     handleSelect(key) {
       this.isShow = this.defaultActive != key;
@@ -107,5 +108,18 @@ body {
 }
 .el-main {
   padding: 0 !important;
+}
+.mobile {
+  .el-header {
+    padding: 0;
+    margin: 0;
+    .logo {
+      width: 100%;
+      img {
+        padding-left: 0;
+        width: 100%;
+      }
+    }
+  }
 }
 </style>

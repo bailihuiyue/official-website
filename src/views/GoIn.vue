@@ -480,4 +480,78 @@ export default {
     }
   }
 }
+.mobile {
+  .section-content {
+    width: auto;
+    .content-summary {
+      display: block;
+      padding: 20px;
+      .summary-left {
+        width: auto;
+        margin: 0 10px;
+      }
+      .summary-right {
+        width: 100%;
+        height: auto;
+        border: none;
+        margin-top: 10px;
+        text-align: center;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+    .content-course {
+      padding: 20px;
+      width: auto;
+      height: auto;
+      .course-time {
+        width: auto;
+        .time-show {
+          width: 70%;
+          .time-show-item {
+            width: 50%;
+            font-size: 14px;
+            padding-right: 5px;
+            .el-divider {
+              display: none;
+            }
+            .item-top {
+              height: 0;
+            }
+          }
+        }
+      }
+    }
+    .content-culture {
+      padding: 10px;
+    }
+    .content-honor {
+      .honor-show {
+        width: auto;
+        li {
+          width: auto;
+          height: auto;
+          margin-left: 0;
+          list-style: none;
+          border: none;
+          text-align: center;
+          img {
+            width: 90%;
+          }
+        }
+      }
+      .honor-big-img {
+        .el-dialog {
+          width: 100%;
+        }
+      }
+    }
+    .content-team {
+      width: 100%;
+      padding: 0;
+    }
+  }
+}
 </style>

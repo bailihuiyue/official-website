@@ -129,4 +129,32 @@ export default {
     }
   }
 }
+.mobile {
+  .case-section-content {
+    width: auto;
+    .case-section-content-list {
+      display: block;
+      height: auto;
+      border: none;
+      img {
+        width: 100%;
+        height: auto;
+      }
+      .content-list-abstract {
+        width: auto;
+        height: auto;
+        .abstract-title{
+          margin-top: 10px;
+        }
+        .abstract-content {
+          height: auto;
+          margin: 10px 0;
+        }
+        .more{
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
 </style>

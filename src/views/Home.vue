@@ -166,21 +166,19 @@ export default {
 
   .slogan {
     text-align: center;
-    font-size: 50px;
+    font-size: 48px;
     color: #fff;
     padding: 30px 0;
   }
 }
 //经典案例
 .case-item {
-  width: 1100px;
   height: 500px;
   overflow: hidden;
   margin: 0 auto;
   margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  width: 100%;
+  text-align: center;
   li {
     width: 330px;
     height: 250px;
@@ -192,6 +190,7 @@ export default {
     margin: 5px;
     position: relative;
     overflow: hidden;
+    display: inline-block;
 
     &:hover {
       .case-item-hover {
@@ -332,5 +331,30 @@ export default {
 }
 .order-img {
   order: 1;
+}
+.mobile {
+  .case-item {
+    li {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  .news-content {
+    width: auto;
+    margin-top: 10px;
+    .news-content-item {
+      width: 200px;
+      .item-img {
+        width: 160px;
+        height: 200px;
+        margin: 0 10px;
+      }
+      .item-content{
+         width: 160px;
+        height: 200px;
+        margin: 0 10px;
+      }
+    }
+  }
 }
 </style>

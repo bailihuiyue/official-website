@@ -84,4 +84,15 @@ export default {
     }
   }
 }
+.mobile{
+  .NewsDetails-product{
+    width: auto;
+    .NewsDetails-product-content{
+      width: auto;
+      p{
+        margin: 0 10px;
+      }
+    }
+  }
+}
 </style>
