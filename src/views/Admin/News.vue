@@ -43,7 +43,7 @@
         <el-form-item label="新闻图片" :label-width="formLabelWidth">
           <el-upload
             class="avatar-uploader"
-            action="http://shkjgw.shkjem.com/api/UpLoad/UploadImage"
+            :action="`${imgserver}api/UpLoad/UploadImage`"
             :headers="headers"
             :show-file-list="false"
             :on-success="handleSuccess"
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import { getNewsAll, createNews, modifiedNews, deleteNews } from "@/services";
 export default {
   name: "loginNews",
   data() {
@@ -110,11 +111,10 @@ export default {
     },
     loadData() {
       this.loading = true;
-      this.$http
-        .get("News/GetNewsAll?type=0&num=10")
+      getNewsAll({ type: 0, num: 10 })
         .then(response => {
           // window.console.log(response);
-          this.tableData = response.data;
+          this.tableData = response;
           this.loading = false;
         })
         .catch(e => {
@@ -138,8 +138,7 @@ export default {
     handleCreateOrModify() {
       if (!this.formData.Id) {
         this.loading = true;
-        this.$http
-          .post("News/CreateNews", this.formData, this.options)
+        createNews(this.formData, this.options)
           .then(response => {
             window.console.log(response);
             this.loading = false;
@@ -158,8 +157,7 @@ export default {
           });
       } else {
         this.loading = true;
-        this.$http
-          .post("News/ModifiedNews", this.formData, this.options)
+        modifiedNews(this.formData, this.options)
           .then(response => {
             this.loading = false;
             window.console.log(response);
@@ -195,8 +193,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          this.$http
-            .post(`News/DeleteNews?id=${row.Id}`, null, this.options)
+          deleteNews(row.Id, null, this.options)
             .then(response => {
               this.loading = false;
               window.console.log(response);

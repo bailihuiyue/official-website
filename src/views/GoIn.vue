@@ -1,6 +1,6 @@
 <template>
   <div class="go-in">
-    <banner img="../assets/img/bgtop.jpg" title="走进科建" />
+    <banner img="../assets/img/bgtop.jpg" title="走进韭菜" />
     <div class="section" v-loading="loading">
       <div class="section-content">
         <div class="content-summary">
@@ -8,13 +8,13 @@
             <p class="title">公司简介</p>
             <p class="eTitle">ABOUT US</p>
             <p class="content">
-              上海科建工程管理股份有限公司成立于2012年9月，注册资金500万。公司前身上海科建工程管理有限公司，
+              上海韭菜工程管理股份有限公司成立于2012年9月，注册资金500万。公司前身上海韭菜工程管理有限公司，
               是一家从事专业工程技术服务及工程项目管理的企业。公司于2017年11月通过国家高新技术企业认定，
               目前工程管理软件研发团队10人，包括硕士和研究生在内，平均年龄在35岁。公司自主研发工程项目管理
               标准化+互联网协同工作系统平台，此软件广泛应用于工程项目管理过程，实现全覆盖检查、全过程控制、全方位协调的目标。
               目前公司业务范围涉及上海、广东等多地，合作的单位有上海同济工程项目管理咨询有限公司、
-              上海华银日用品有限公司、中科建设开发总公司、广东怡轩房地产开发有限公司等多家知名企业。 立人立己、达人达己！公司一直秉承“
-              帮助施工单位解决技术问题、帮助业主解决协调问题 ”的管理理念，上海科建工程管理股份有限公司不断在工程项目管理领域开拓创新，
+              上海华银日用品有限公司、中韭菜设开发总公司、广东怡轩房地产开发有限公司等多家知名企业。 立人立己、达人达己！公司一直秉承“
+              帮助施工单位解决技术问题、帮助业主解决协调问题 ”的管理理念，上海韭菜工程管理股份有限公司不断在工程项目管理领域开拓创新，
               通过不断完善工程项目管理标准化+互联网协同工作系统平台，实现每项工程“无重大安全事故、无重大返工、工程施工材料无伪劣产品、
               工程管理留下痕迹、施工过程可追溯”五大管理目标。
             </p>
@@ -119,6 +119,7 @@
 </template>
 
 <script>
+import { baseService, getGoInData } from "@/services";
 import Banner from "../components/Banner";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
@@ -146,36 +147,29 @@ export default {
     };
   },
   mounted() {
-    this.$http
-      .all([
-        this.$http.get("Honor/GetHonorAll"),
-        this.$http.get("Enterprise/GetEnterpriseAll"),
-        this.$http.get(`Team/GetTeamAll`),
-        this.$http.get(`Course/GetCourseAll`)
-      ])
-      .then(
-        this.$http.spread(
-          (responseHonor, responseEnterprise, responseTeam, responseCourse) => {
-            this.honorList = responseHonor.data;
-            this.partnerImg = responseEnterprise.data;
-            this.teamItem = responseTeam.data;
+    getGoInData().then(
+      baseService.spread(
+        (responseHonor, responseEnterprise, responseTeam, responseCourse) => {
+          this.honorList = responseHonor;
+          this.partnerImg = responseEnterprise;
+          this.teamItem = responseTeam;
 
-            var groupCount = Math.ceil(responseCourse.data.length / 2);
-            window.console.log(groupCount);
-            for (let i = 0; i < groupCount; i++) {
-              let img2 = [];
-              for (let j = 0; j < 2; j++) {
-                if (responseCourse.data.length - 1 >= i * 2 + j) {
-                  img2.push(responseCourse.data[i * 2 + j]);
-                }
+          var groupCount = Math.ceil(responseCourse.length / 2);
+          window.console.log(groupCount);
+          for (let i = 0; i < groupCount; i++) {
+            let img2 = [];
+            for (let j = 0; j < 2; j++) {
+              if (responseCourse.length - 1 >= i * 2 + j) {
+                img2.push(responseCourse[i * 2 + j]);
               }
-              this.courseList.push(img2);
             }
-            window.console.log(this.courseList);
-            this.loading = false;
+            this.courseList.push(img2);
           }
-        )
-      );
+          window.console.log(this.courseList);
+          this.loading = false;
+        }
+      )
+    );
   }
 };
 </script>

@@ -1,10 +1,11 @@
-# Shanghai kejian engineering management
-> 科健工程管理有限公司企业官网 前端    
+# 基于网上老哥的企业官网修改,适合自己使用,mock已经制作完成
 
-一个业余时间（三周）的外包项目 最终成品：http://www.shkjem.com    
-主分支已更新至改进版，老版本源码移至 Release  
-如果是学习的话推荐学习新版本 链接 http://kejian.smilef.cn/     
-另外有些同学在问后端的代码 这里 https://github.com/ifzc/ShkjemApi 
+为避嫌,原网站名称已全部改为'韭菜'
+> Shanghai jiucai engineering management
+> 韭菜工程管理有限公司企业官网 前端    
+
+作者Github:https://github.com/ifzc/Shkjem     
+后端C#:https://github.com/ifzc/ShkjemApi 
 
 ## 新版本改进
 1. 整体重构，结构升级为最新 vue-cli
@@ -22,17 +23,10 @@
 5. vue-awesome-swiper (首页滚动组件)
 6. vue-lazyload (图片懒加载)
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
+<div>
+<img src="https://gitee.com/Onces/images/raw/master/money.png" width=200>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://gitee.com/Onces/images/raw/master/zhifubaohongbao.jpg" width=200>
+<div>觉得不错,请我喝杯奶茶吧~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+扫个红包,支持我一下</div>   
+</div>

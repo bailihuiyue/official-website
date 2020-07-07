@@ -2,7 +2,7 @@
   <div class="login">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>科建后台登录入口</span>
+        <span>韭菜后台登录入口</span>
       </div>
       <div>
         <el-form
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { userLogin } from "@/services";
 export default {
   data() {
     return {
@@ -57,18 +58,18 @@ export default {
     login() {
       this.$refs.lform.validate(valid => {
         if (valid) {
-          this.$http
-            .get(
-              `User/Login?strUser=${this.loginform.name}&strPwd=${this.loginform.pass}`
-            )
+          userLogin({
+            strUser: this.loginform.name,
+            strPwd: this.loginform.pass
+          })
             .then(response => {
               window.console.log(response);
-              if (response.data.bRes) {
+              if (response.bRes) {
                 this.$message({
                   message: "登录成功了呢",
                   type: "success"
                 });
-                sessionStorage.setItem("token", response.data.Ticket);
+                sessionStorage.setItem("token", response.Ticket);
                 this.$router.push({ name: "admin" });
               } else {
                 this.$message({

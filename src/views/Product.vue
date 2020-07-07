@@ -110,12 +110,14 @@
 </template>
 
 <script>
+import { getDataDictionaryAll } from "@/services";
+import { videoURL } from "@/utils/utils";
 import Banner from "../components/Banner";
 export default {
   data() {
     return {
       loading: true,
-      videoSrc: "http://www.shkjem.com/video/kj.mp4",
+      videoSrc: videoURL,
       playerOptions: {
         playbackRates: [0.5, 1.0, 1.5, 2.0, 4.0, 8.0], //可选择的播放速度
         autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -128,7 +130,7 @@ export default {
         sources: [
           {
             type: "",
-            src: "http://www.shkjem.com/video/kj.mp4" //url地址
+            src: videoURL //url地址
           }
         ],
         //poster: "../assets/img/home_top.jpg", //你的封面地址
@@ -147,12 +149,11 @@ export default {
     Banner
   },
   created() {
-    this.$http
-      .get(
-        "DataDictionary/GetDataDictionaryAll?key=%E4%BA%A7%E5%93%81%E8%A7%86%E9%A2%91%E9%93%BE%E6%8E%A5"
-      )
+    getDataDictionaryAll({
+      key: "%E4%BA%A7%E5%93%81%E8%A7%86%E9%A2%91%E9%93%BE%E6%8E%A5"
+    })
       .then(response => {
-        this.videoSrc = response.data[0].Content;
+        this.videoSrc = response[0] && response[0].Content;
         window.console.log(this.videoSrc);
         this.loading = false;
       })

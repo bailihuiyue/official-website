@@ -35,10 +35,6 @@
             <i class="el-icon-setting"></i>
             <span slot="title">数据字典管理</span>
           </el-menu-item>
-          <el-menu-item index="/admin/page">
-            <i class="el-icon-setting"></i>
-            <span slot="title">测试分页</span>
-          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-container>
@@ -47,7 +43,7 @@
             <router-view />
           </div>
         </el-main>
-        <el-footer>2019@科建版权所有</el-footer>
+        <el-footer>2019@韭菜版权所有</el-footer>
       </el-container>
     </el-container>
   </div>

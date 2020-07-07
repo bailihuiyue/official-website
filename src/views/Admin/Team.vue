@@ -30,7 +30,7 @@
         <el-form-item label="风采图片" :label-width="formLabelWidth">
           <el-upload
             class="avatar-uploader"
-            action="http://shkjgw.shkjem.com/api/UpLoad/UploadImage"
+            :action="`${imgserver}api/UpLoad/UploadImage`"
             :headers="headers"
             :show-file-list="false"
             :on-success="handleSuccess"
@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import { getTeamAll, createTeam, modifiedTeam, deleteTeam } from "@/services";
 export default {
   data() {
     return {
@@ -90,11 +91,10 @@ export default {
     },
     loadData() {
       this.loading = true;
-      this.$http
-        .get("Team/GetTeamAll")
+      getTeamAll()
         .then(response => {
           window.console.log(response);
-          this.tableData = response.data;
+          this.tableData = response;
           this.loading = false;
         })
         .catch(e => {
@@ -120,8 +120,7 @@ export default {
       if (!this.formData.Id) {
         // ID 无效时 视为新增
         this.loading = true;
-        this.$http
-          .post("Team/CreateTeam", this.formData, this.options)
+        createTeam(this.formData, this.options)
           .then(response => {
             this.loading = false;
             window.console.log(response);
@@ -140,8 +139,7 @@ export default {
           });
       } else {
         this.loading = true;
-        this.$http
-          .post("Team/ModifiedTeam", this.formData, this.options)
+        modifiedTeam(this.formData, this.options)
           .then(response => {
             this.loading = false;
             window.console.log(response);
@@ -176,8 +174,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          this.$http
-            .post(`Team/DeleteTeam?id=${row.Id}`, null, this.options)
+          deleteTeam(row.Id, null, this.options)
             .then(response => {
               this.loading = false;
               window.console.log(response);

@@ -3,8 +3,8 @@
     <swiper id="swiperBox" v-bind:options="swiperOption" ref="mySwiper">
       <swiper-slide class="swiper-slide slide-one">
         <div class="page">
-          <h3>科建股份</h3>
-          <p>KeJian Stock</p>
+          <h3>韭菜股份</h3>
+          <p>Website Stock</p>
         </div>
         <p class="slogan">立人立己 达人达己</p>
       </swiper-slide>
@@ -67,6 +67,7 @@
 </template>
  
 <script>
+import { baseService, getCasesAll, getNews } from "@/services";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
   name: "HelloWorld",
@@ -123,18 +124,13 @@ export default {
     }
   },
   mounted() {
-    this.$http
-      .all([
-        this.$http.get("Cases/GetCasesAll"),
-        this.$http.get(`News?type=1&num=3`)
-      ])
-      .then(
-        this.$http.spread((responseCases, responseNews) => {
-          this.caseList = responseCases.data;
-          this.newsList = responseNews.data;
-          this.loading = false;
-        })
-      );
+    baseService.all([getCasesAll(), getNews({ type: 1, num: 3 })]).then(
+      baseService.spread((responseCases, responseNews) => {
+        this.caseList = responseCases;
+        this.newsList = responseNews;
+        this.loading = false;
+      })
+    );
   }
 };
 </script>
@@ -349,8 +345,8 @@ export default {
         height: 200px;
         margin: 0 10px;
       }
-      .item-content{
-         width: 160px;
+      .item-content {
+        width: 160px;
         height: 200px;
         margin: 0 10px;
       }

@@ -39,6 +39,12 @@
 </template>
 
 <script>
+import {
+  getCourseAll,
+  createCourse,
+  modifiedCourse,
+  deleteCourse
+} from "@/services";
 export default {
   data() {
     return {
@@ -69,11 +75,10 @@ export default {
   methods: {
     loadData() {
       this.loading = true;
-      this.$http
-        .get("Course/GetCourseAll")
+      getCourseAll()
         .then(response => {
           window.console.log(response);
-          this.tableData = response.data;
+          this.tableData = response;
           this.loading = false;
         })
         .catch(e => {
@@ -100,8 +105,7 @@ export default {
       if (!this.formData.Id) {
         // ID 无效时 视为新增
         this.loading = true;
-        this.$http
-          .post("Course/CreateCourse", this.formData, this.options)
+        createCourse(this.formData, this.options)
           .then(response => {
             this.loading = false;
             window.console.log(response);
@@ -120,8 +124,7 @@ export default {
           });
       } else {
         this.loading = true;
-        this.$http
-          .post("Course/ModifiedCourse", this.formData, this.options)
+        modifiedCourse(this.formData, this.options)
           .then(response => {
             this.loading = false;
             window.console.log(response);
@@ -156,8 +159,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          this.$http
-            .post(`Course/DeleteCourse?id=${row.Id}`, null, this.options)
+          deleteCourse(row.Id, null, this.options)
             .then(response => {
               this.loading = false;
               window.console.log(response);

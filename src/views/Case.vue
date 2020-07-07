@@ -24,6 +24,7 @@
   </div>
 </template>
 <script>
+import { getCasesAll } from "@/services";
 import Banner from "../components/Banner";
 export default {
   components: {
@@ -37,11 +38,10 @@ export default {
   },
   mounted() {
     window.console.log("case");
-    this.$http
-      .get("Cases/GetCasesAll")
+    getCasesAll()
       .then(response => {
         //console.log(response);
-        this.caseList = response.data;
+        this.caseList = response;
         //window.console.log(this.caseList);
         this.loading = false;
       })
@@ -143,14 +143,14 @@ export default {
       .content-list-abstract {
         width: auto;
         height: auto;
-        .abstract-title{
+        .abstract-title {
           margin-top: 10px;
         }
         .abstract-content {
           height: auto;
           margin: 10px 0;
         }
-        .more{
+        .more {
           margin-bottom: 10px;
         }
       }

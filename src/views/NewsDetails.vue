@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { getNewsById } from "@/services";
 import Banner from "../components/Banner";
 export default {
   name: "NewsDetails",
@@ -34,11 +35,10 @@ export default {
   },
   methods: {
     loadData() {
-      this.$http
-        .get(`News/GetNewsById/${this.pid}`)
+      getNewsById(this.pid)
         .then(response => {
           //console.log(response);
-          this.newsIdList = response.data;
+          this.newsIdList = response;
           window.console.log(this.newsIdList);
         })
         .catch(function(error) {

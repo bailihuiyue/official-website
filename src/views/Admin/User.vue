@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { getUserAll, createUser, modifiedUser, deleteUser } from "@/services";
 export default {
   data() {
     return {
@@ -80,11 +81,10 @@ export default {
   methods: {
     loadData() {
       this.loading = true;
-      this.$http
-        .post("User/GetUserAll", null, this.options)
+      getUserAll(null, this.options)
         .then(response => {
           window.console.log(response);
-          this.tableData = response.data;
+          this.tableData = response;
           this.loading = false;
         })
         .catch(e => {
@@ -111,8 +111,7 @@ export default {
       if (!this.formData.Id) {
         // ID 无效时 视为新增
         this.loading = true;
-        this.$http
-          .post("User/CreateUser", this.formData, this.options)
+        createUser(this.formData, this.options)
           .then(response => {
             this.loading = false;
             window.console.log(response);
@@ -131,8 +130,7 @@ export default {
           });
       } else {
         this.loading = true;
-        this.$http
-          .post("User/ModifiedUser", this.formData, this.options)
+        modifiedUser(this.formData, this.options)
           .then(response => {
             this.loading = false;
             window.console.log(response);
@@ -167,8 +165,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          this.$http
-            .post(`User/DeleteUser?id=${row.Id}`, null, this.options)
+          deleteUser(row.Id, null, this.options)
             .then(response => {
               this.loading = false;
               window.console.log(response);
@@ -194,8 +191,9 @@ export default {
     },
     //时间格式化
     dateFormat: function(row) {
+      const time = Number(row.CreateTime);
       //row 表示一行数据, CreateTime 表示要格式化的字段名称
-      let t = new Date(row.CreateTime);
+      let t = new Date(time);
       return t.getFullYear() + "-" + (t.getMonth() + 1) + "-" + t.getDate();
     }
   }

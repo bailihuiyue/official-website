@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { getCasesById } from "@/services";
 import Banner from "../components/Banner";
 export default {
   components: {
@@ -33,11 +34,10 @@ export default {
   },
   methods: {
     loadData() {
-      this.$http
-        .get(`Cases/GetCasesById/${this.pid}`)
+      getCasesById(this.pid)
         .then(response => {
           //console.log(response);
-          this.caseIdList = response.data;
+          this.caseIdList = response;
           window.console.log(this.caseIdList);
         })
         .catch(function(error) {
@@ -79,6 +79,26 @@ export default {
         font-size: 17px;
         font-weight: bolder;
         padding: 20px 0;
+      }
+    }
+  }
+}
+.mobile {
+  .case-product {
+    width: auto;
+    .case-product-content {
+      width: auto;
+      display: block;
+      padding: 0;
+      img {
+        width: auto;
+        height: auto;
+      }
+      p {
+        padding: 20px 10px;
+      }
+      .product-title {
+        font-size: 20px;
       }
     }
   }

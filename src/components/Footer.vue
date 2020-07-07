@@ -3,7 +3,7 @@
     <div class="footer-content">
       <ul class="content-nav">
         <li>
-          <p>走进科建</p>
+          <p>走进韭菜</p>
           <span>发展历程</span>
           <span>企业文化</span>
           <span>资质荣誉</span>
@@ -23,7 +23,7 @@
         </li>
         <li class="contact">
           <p>联系我们</p>
-          <span>邮箱：kejianlml@163.com</span>
+          <span>邮箱：websitelml@163.com</span>
           <span>电话：021-55802368</span>
           <span>地址：上海市杨浦区翔殷路128号12号楼101</span>
         </li>
@@ -31,7 +31,7 @@
       <img src="@/assets/img/ercode.png" alt />
     </div>
     <div class="copyright">
-      <span>科建版权所有</span>
+      <span>韭菜版权所有</span>
     </div>
   </div>
 </template>

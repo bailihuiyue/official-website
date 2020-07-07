@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { getNews } from "@/services";
 import Banner from "../components/Banner";
 export default {
   name: "news",
@@ -59,11 +60,10 @@ export default {
   methods: {
     loadData() {
       this.loading = true;
-      this.$http
-        .get(`News?type=${this.newstype}&num=6`)
+      getNews({ type: this.newstype, num: 6 })
         .then(response => {
           //console.log(response);
-          this.newsList = response.data;
+          this.newsList = response;
           this.loading = false;
           //window.console.log(this.newsList);
         })
@@ -227,23 +227,23 @@ export default {
       bottom: 18px;
     }
   }
-  .content-nav-item{
+  .content-nav-item {
     width: auto;
-    .item-list{
+    .item-list {
       width: 100%;
       margin: 0;
       margin-bottom: 5px;
       border: none;
       border-bottom: 1px solid #15669e;
-      .item-img{
+      .item-img {
         width: 90%;
       }
-      .item-list-title{
+      .item-list-title {
         width: auto;
-        border-left:none;
+        border-left: none;
       }
     }
-    .item-list-content{
+    .item-list-content {
       overflow: auto;
       text-indent: 2em;
     }
