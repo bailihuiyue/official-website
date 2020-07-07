@@ -78,7 +78,6 @@ export default {
   },
   mounted() {
     let token = "Browser " + sessionStorage.getItem("token");
-    //window.console.log(token);
     this.options = {
       headers: {
         Authorization: token
@@ -91,14 +90,12 @@ export default {
   },
   methods: {
     handleSuccess(response, file, fileList) {
-      window.console.log(response, file, fileList);
       this.formData.Img = response;
     },
     loadData() {
       this.loading = true;
       getEnterpriseAll()
         .then(response => {
-          window.console.log(response);
           this.tableData = response;
           this.loading = false;
         })
@@ -120,15 +117,12 @@ export default {
     },
     // 新增
     handleCreateOrModify() {
-      window.console.log(this.formData);
-      //window.console.log(JSON.stringify(this.formData));
       if (!this.formData.Id) {
         // ID 无效时 视为新增
         this.loading = true;
         createDataEnterprise(this.formData, this.options)
           .then(response => {
             this.loading = false;
-            window.console.log(response);
             this.$message({
               message: "创建成功！",
               type: "success"
@@ -147,7 +141,6 @@ export default {
         modifiedEnterprise(this.formData, this.options)
           .then(response => {
             this.loading = false;
-            window.console.log(response);
             this.$message({
               message: "修改成功！",
               type: "success"
@@ -164,12 +157,10 @@ export default {
       }
     },
     handleEdit(index, row) {
-      window.console.log(index, row);
       this.formData = row;
       this.dialogFormVisible = true;
     },
     handleDelete(index, row) {
-      window.console.log(index, row);
       this.$confirm("此操作将永久此条数据, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -182,7 +173,6 @@ export default {
           deleteEnterprise(row.Id, null, this.options)
             .then(response => {
               this.loading = false;
-              window.console.log(response);
               this.$message({
                 message: "删除成功！",
                 type: "success"

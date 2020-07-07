@@ -27,7 +27,6 @@ export default {
   },
   created() {
     this.pid = this.$route.params.id;
-    window.console.log(this.pid);
   },
   mounted() {
     this.loadData();
@@ -38,10 +37,12 @@ export default {
         .then(response => {
           //console.log(response);
           this.caseIdList = response;
-          window.console.log(this.caseIdList);
         })
-        .catch(function(error) {
-          window.console.log(error);
+        .catch(function(e) {
+          this.$message({
+            message: "网络或程序异常！" + e,
+            type: "error"
+          });
         });
     }
   }

@@ -63,7 +63,6 @@ export default {
             strPwd: this.loginform.pass
           })
             .then(response => {
-              window.console.log(response);
               if (response.bRes) {
                 this.$message({
                   message: "登录成功了呢",

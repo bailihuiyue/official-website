@@ -92,7 +92,6 @@ export default {
   },
   mounted() {
     let token = "Browser " + sessionStorage.getItem("token");
-    //window.console.log(token);
     this.options = {
       headers: {
         Authorization: token
@@ -106,14 +105,12 @@ export default {
   },
   methods: {
     handleSuccess(response, file, fileList) {
-      window.console.log(response, file, fileList);
       this.formData.Img = response;
     },
     loadData() {
       this.loading = true;
       getNewsAll({ type: 0, num: 10 })
         .then(response => {
-          // window.console.log(response);
           this.tableData = response;
           this.loading = false;
         })
@@ -140,7 +137,6 @@ export default {
         this.loading = true;
         createNews(this.formData, this.options)
           .then(response => {
-            window.console.log(response);
             this.loading = false;
             this.$message({
               message: "创建成功！",
@@ -160,7 +156,6 @@ export default {
         modifiedNews(this.formData, this.options)
           .then(response => {
             this.loading = false;
-            window.console.log(response);
             this.$message({
               message: "修改成功！",
               type: "success"
@@ -179,7 +174,6 @@ export default {
     //编辑
     handleEdit(index, row) {
       //index:第几行   row:这一行的数据
-      window.console.log(index, row);
       this.formData = row;
       this.dialogFormVisible = true;
     },
@@ -196,7 +190,6 @@ export default {
           deleteNews(row.Id, null, this.options)
             .then(response => {
               this.loading = false;
-              window.console.log(response);
               this.$message({
                 message: "删除成功！",
                 type: "success"

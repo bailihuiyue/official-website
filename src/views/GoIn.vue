@@ -155,7 +155,6 @@ export default {
           this.teamItem = responseTeam;
 
           var groupCount = Math.ceil(responseCourse.length / 2);
-          window.console.log(groupCount);
           for (let i = 0; i < groupCount; i++) {
             let img2 = [];
             for (let j = 0; j < 2; j++) {
@@ -165,7 +164,6 @@ export default {
             }
             this.courseList.push(img2);
           }
-          window.console.log(this.courseList);
           this.loading = false;
         }
       )

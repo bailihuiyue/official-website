@@ -65,10 +65,12 @@ export default {
           //console.log(response);
           this.newsList = response;
           this.loading = false;
-          //window.console.log(this.newsList);
         })
-        .catch(function(error) {
-          window.console.log(error);
+        .catch(function(e) {
+          this.$message({
+            message: "网络或程序异常！" + e,
+            type: "error"
+          });
         });
     }
   },
@@ -76,8 +78,7 @@ export default {
     this.loadData();
   },
   watch: {
-    newstype(type) {
-      window.console.log(type);
+    newstype() {
       this.loadData();
     }
   }

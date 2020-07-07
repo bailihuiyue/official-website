@@ -54,7 +54,6 @@ export default {
   methods: {
     handleSelect(key) {
       this.isShow = this.defaultActive != key;
-      window.console.log(this.isShow);
       if (this.showDrawer) this.showDrawer = false;
     },
     handleDisplayDrawer(isShowDrawer) {

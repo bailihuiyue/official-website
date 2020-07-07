@@ -154,11 +154,13 @@ export default {
     })
       .then(response => {
         this.videoSrc = response[0] && response[0].Content;
-        window.console.log(this.videoSrc);
         this.loading = false;
       })
-      .catch(function(error) {
-        window.console.log(error);
+      .catch(function(e) {
+        this.$message({
+          message: "网络或程序异常！" + e,
+          type: "error"
+        });
       });
   }
 };

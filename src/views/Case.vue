@@ -37,16 +37,13 @@ export default {
     };
   },
   mounted() {
-    window.console.log("case");
     getCasesAll()
       .then(response => {
         //console.log(response);
         this.caseList = response;
-        //window.console.log(this.caseList);
         this.loading = false;
       })
       .catch(function(error) {
-        window.console.log(error);
       });
   }
 };

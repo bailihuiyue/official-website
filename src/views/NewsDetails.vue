@@ -28,7 +28,6 @@ export default {
   },
   created() {
     this.pid = this.$route.params.id;
-    window.console.log(this.pid);
   },
   mounted() {
     this.loadData();
@@ -37,12 +36,13 @@ export default {
     loadData() {
       getNewsById(this.pid)
         .then(response => {
-          //console.log(response);
           this.newsIdList = response;
-          window.console.log(this.newsIdList);
         })
-        .catch(function(error) {
-          window.console.log(error);
+        .catch(function(e) {
+          this.$message({
+            message: "网络或程序异常！" + e,
+            type: "error"
+          });
         });
     }
   }
@@ -84,12 +84,12 @@ export default {
     }
   }
 }
-.mobile{
-  .NewsDetails-product{
+.mobile {
+  .NewsDetails-product {
     width: auto;
-    .NewsDetails-product-content{
+    .NewsDetails-product-content {
       width: auto;
-      p{
+      p {
         margin: 0 10px;
       }
     }
