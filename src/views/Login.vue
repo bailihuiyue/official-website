@@ -45,9 +45,9 @@ export default {
         pass: [
           { required: true, message: "请输入密码", trigger: "blur" },
           {
-            min: 5,
+            min: 3,
             max: 20,
-            message: "密码长度在 5 到 20 个字符",
+            message: "密码长度在 3 到 20 个字符",
             trigger: "blur"
           }
         ]
@@ -59,22 +59,17 @@ export default {
       this.$refs.lform.validate(valid => {
         if (valid) {
           userLogin({
-            strUser: this.loginform.name,
-            strPwd: this.loginform.pass
+            loginName: this.loginform.name,
+            password: this.loginform.pass
           })
             .then(response => {
               if (response.bRes) {
                 this.$message({
-                  message: "登录成功了呢",
+                  message: "登录成功",
                   type: "success"
                 });
                 sessionStorage.setItem("token", response.Ticket);
                 this.$router.push({ name: "admin" });
-              } else {
-                this.$message({
-                  message: "账号或密码错误",
-                  type: "error"
-                });
               }
             })
             .catch(e => {

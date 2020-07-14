@@ -1,15 +1,14 @@
 <template>
   <div>
     <el-button type="primary" @click="openDialog()">新增用户</el-button>
-    <el-button type="danger">清除用户身份票据</el-button>
+    <el-button type="danger" @click="logout">退出登录</el-button>
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
-      <el-table-column prop="Id" label="序号"></el-table-column>
-      <el-table-column prop="LoginName" label="用户名"></el-table-column>
-      <el-table-column prop="Password" label="密码"></el-table-column>
-      <el-table-column prop="IsAction" label="是否启用">
-        <template slot-scope="scope">{{ scope.row.IsAction ? '是':'否' }}</template>
+      <el-table-column prop="id" label="序号"></el-table-column>
+      <el-table-column prop="loginName" label="用户名"></el-table-column>
+      <el-table-column prop="isAction" label="是否启用">
+        <template slot-scope="scope">{{ scope.row.isAction ? '是':'否' }}</template>
       </el-table-column>
-      <el-table-column prop="CreateTime" label="创建时间" :formatter="dateFormat"></el-table-column>
+      <el-table-column prop="ceateTime" label="创建时间" :formatter="dateFormat"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
@@ -181,11 +180,19 @@ export default {
         });
     },
     //时间格式化
-    dateFormat: function(row) {
-      const time = Number(row.CreateTime);
-      //row 表示一行数据, CreateTime 表示要格式化的字段名称
-      let t = new Date(time);
+    dateFormat: function({ createTime }) {
+      let t = new Date(createTime);
       return t.getFullYear() + "-" + (t.getMonth() + 1) + "-" + t.getDate();
+    },
+    logout() {
+      this.$confirm("即将退出, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      }).then(res => {
+        window.sessionStorage.clear();
+        this.$router.push("/login");
+      });
     }
   }
 };

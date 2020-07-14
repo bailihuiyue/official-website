@@ -20,6 +20,7 @@ axios.interceptors.request.use(
   (config) => {
     config.headers["Content-Type"] =
       ContentType[config.data instanceof FormData ? "formData" : "json"];
+    config.headers["token"] =window.sessionStorage.getItem("token");
     return config;
   },
   (error) => {
@@ -29,9 +30,10 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   (res) => {
+    debugger;
     if (res.status === 200) {
-      if (res.data) {
-        return res.data;
+      if (res.data.data) {
+        return res.data.data;
       } else {
         Message.error(res.data.resultMsg);
         return false;

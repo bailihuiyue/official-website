@@ -142,9 +142,9 @@ export const deleteTeam = (id, formData, options) => {
   return baseService.post(api, { formData, options });
 };
 
-export const getUserAll = (formData, options) => {
+export const getUserAll = () => {
   const api = `User/GetUserAll`;
-  return baseService.post(api, { formData, options });
+  return baseService.get(api);
 };
 export const createUser = (formData, options) => {
   const api = `User/CreateUser`;
@@ -159,9 +159,9 @@ export const deleteUser = (id, formData, options) => {
   return baseService.post(api, { formData, options });
 };
 
-export const userLogin = (params) => {
+export const userLogin = ({loginName,password}) => {
   const api = `User/Login`;
-  return baseService.get(api, { params });
+  return baseService.post(api, { loginName,password });
 };
 
 export const getGoInData = () => {
