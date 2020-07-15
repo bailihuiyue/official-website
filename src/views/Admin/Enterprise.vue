@@ -30,7 +30,7 @@
         <el-form-item label="企业Logo" :label-width="formLabelWidth">
           <el-upload
             class="avatar-uploader"
-            :action="`${imgserver}api/UpLoad/UploadImage`"
+            :action="`${imgserver}api/Upload/UploadImage`"
             :headers="headers"
             :show-file-list="false"
             :on-success="handleSuccess"
@@ -70,7 +70,7 @@ export default {
         Img: "",
         Remark: "",
         CreateTime: new Date()
-      },
+      }
     };
   },
   mounted() {
@@ -78,7 +78,14 @@ export default {
   },
   methods: {
     handleSuccess(response) {
-      this.formData.Img = response;
+      if (response.resultCode === "000000") {
+        this.formData.img = response.data;
+      } else {
+        this.$message({
+          message: response.resultMsg || "上传图片失败,请重试!",
+          type: "error"
+        });
+      }
     },
     loadData() {
       this.loading = true;

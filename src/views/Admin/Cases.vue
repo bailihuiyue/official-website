@@ -3,14 +3,14 @@
     <el-button type="primary" @click="openDialog()">新增案例</el-button>
 
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
-      <el-table-column prop="Id" label="序号" width="180"></el-table-column>
-      <el-table-column prop="Title" label="案例标题" width="180"></el-table-column>
-      <el-table-column prop="Img" label="图片">
+      <el-table-column prop="id" label="序号" width="180"></el-table-column>
+      <el-table-column prop="title" label="案例标题" width="180"></el-table-column>
+      <el-table-column prop="img" label="图片">
         <template slot-scope="scope">
-          <img style="width:100%" :src="imgserver+scope.row.Img" alt />
+          <img style="width:100%" :src="imgserver+scope.row.img" alt />
         </template>
       </el-table-column>
-      <el-table-column prop="Content" label="案例内容"></el-table-column>
+      <el-table-column prop="content" label="案例内容"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
@@ -29,22 +29,23 @@
     <el-dialog title="案例编辑" :visible.sync="dialogFormVisible">
       <el-form :model="formData">
         <el-form-item label="案例标题" :label-width="formLabelWidth">
-          <el-input v-model="formData.Title" autocomplete="off"></el-input>
+          <el-input v-model="formData.title" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="案例图片" :label-width="formLabelWidth">
           <!-- :before-upload="beforeAvatarUpload" -->
           <el-upload
             class="avatar-uploader"
-            :action="`${imgserver}api/UpLoad/UploadImage`"
+            :action="`${imgserver}api/Upload/UploadImage`"
             :show-file-list="false"
             :on-success="handleSuccess"
+            :headers="headers"
           >
-            <img v-if="formData.Img" :src="imgserver + formData.Img" class="avatar" />
+            <img v-if="formData.img" :src="imgserver + formData.img" class="avatar" />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
         <el-form-item label="案例内容" :label-width="formLabelWidth">
-          <el-input v-model="formData.Content" autocomplete="off"></el-input>
+          <el-input v-model="formData.content" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -70,13 +71,16 @@ export default {
       formLabelWidth: "120px",
       tableData: [],
       formData: {
-        Id: 0,
-        Img: "",
-        Title: "",
-        Content: "",
-        Del: "",
-        CreateTime: new Date()
+        id: 0,
+        img: "",
+        title: "",
+        content: "",
+        del: "",
+        createTime: new Date()
       },
+      headers: {
+        token: window.sessionStorage.getItem("token")
+      }
     };
   },
   mounted() {
@@ -84,7 +88,14 @@ export default {
   },
   methods: {
     handleSuccess(response) {
-      this.formData.Img = response;
+      if (response.resultCode === "000000") {
+        this.formData.img = response.data;
+      } else {
+        this.$message({
+          message: response.resultMsg||"上传图片失败,请重试!",
+          type: "error"
+        });
+      }
     },
     loadData() {
       this.loading = true;
@@ -102,12 +113,12 @@ export default {
     },
     openDialog() {
       // 清除数据
-      this.formData.Id = 0;
-      this.formData.Img = "";
-      this.formData.Title = "";
-      this.formData.Content = "";
-      this.formData.Del = "";
-      this.formData.CreateTime = new Date();
+      this.formData.id = 0;
+      this.formData.img = "";
+      this.formData.title = "";
+      this.formData.content = "";
+      this.formData.del = "";
+      this.formData.createTime = new Date();
 
       this.dialogFormVisible = true;
     },

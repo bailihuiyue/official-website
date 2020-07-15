@@ -328,4 +328,6 @@ module.exports = {
   "post /Team/CreateTeam": { data: true },
   "post /Team/ModifiedTeam": { data: true },
   "post /Team/DeleteTeam": { data: true },
+
+  "post /api/Upload/UploadImage": ()=>"imagestore/2020/0605/439332ec-11c0-440c-8800-d94b0479c22c.jpg",
 };
