@@ -1,5 +1,5 @@
 module.exports = {
-  "/User/Login": { bRes: true, Ticket: "abc" },
+  "get /User/Login": { bRes: true, Ticket: "abc" },
   "post /User/GetUserAll": [
     {
       Id: "@uuid()",
@@ -25,7 +25,7 @@ module.exports = {
   ],
   "post /User/CreateUser": () => true,
   "post /User/ModifiedUser": () => true,
-  "post /User/DeleteUser": () => true,
+  "get /User/DeleteUser": () => true,
   //
   "/Cases/GetCasesAll": [
     {

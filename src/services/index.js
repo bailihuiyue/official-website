@@ -146,17 +146,17 @@ export const getUserAll = () => {
   const api = `User/GetUserAll`;
   return baseService.get(api);
 };
-export const createUser = (formData, options) => {
+export const createUser = (formData) => {
   const api = `User/CreateUser`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, {...formData});
 };
-export const modifiedUser = (formData, options) => {
+export const modifiedUser = (formData) => {
   const api = `User/ModifiedUser`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const deleteUser = (id, formData, options) => {
+export const deleteUser = (id) => {
   const api = `User/DeleteUser?id=${id}`;
-  return baseService.post(api, { formData, options });
+  return baseService.get(api);
 };
 
 export const userLogin = ({loginName,password}) => {

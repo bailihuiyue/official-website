@@ -15,13 +15,13 @@
             type="primary"
             icon="el-icon-edit"
             @click="handleEdit(scope.$index, scope.row)"
-            :disabled="scope.row.LoginName == 'admin'"
+            :disabled="scope.row.loginName == 'admin'"
           ></el-button>
           <el-button
             type="danger"
             icon="el-icon-delete"
             @click="handleDelete(scope.$index, scope.row)"
-            :disabled="scope.row.LoginName == 'admin'"
+            :disabled="scope.row.loginName == 'admin'"
           ></el-button>
         </template>
       </el-table-column>
@@ -29,14 +29,14 @@
     <el-dialog title="用户信息操作" :visible.sync="dialogFormVisible">
       <el-form :model="formData">
         <el-form-item label="登录名" :label-width="formLabelWidth">
-          <el-input v-model="formData.LoginName" autocomplete="off"></el-input>
+          <el-input v-model="formData.loginName" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="密码" :label-width="formLabelWidth">
-          <el-input v-model="formData.Password" autocomplete="off"></el-input>
+          <el-input v-model="formData.password" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="是否启用" :label-width="formLabelWidth">
-          <el-radio v-model="formData.IsAction" :label="true" border>是</el-radio>
-          <el-radio v-model="formData.IsAction" :label="false" border>否</el-radio>
+          <el-radio v-model="formData.isAction" :label="true" border>是</el-radio>
+          <el-radio v-model="formData.isAction" :label="false" border>否</el-radio>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -57,11 +57,11 @@ export default {
       formLabelWidth: "120px",
       tableData: [],
       formData: {
-        Id: 0,
-        LoginName: "",
-        Password: "",
-        IsAction: true,
-        CreateTime: new Date()
+        id: 0,
+        loginName: "",
+        password: "",
+        isAction: true,
+        createTime: new Date()
       },
       options: {}
     };
@@ -86,19 +86,20 @@ export default {
     },
     openDialog() {
       // 清除数据
-      this.formData.Id = 0;
-      this.formData.LoginName = "";
-      this.formData.Password = "";
-      this.formData.IsAction = true;
-      this.formData.CreateTime = new Date();
+      this.formData.id = 0;
+      this.formData.loginName = "";
+      this.formData.password = "";
+      this.formData.isAction = true;
+      this.formData.createTime = new Date();
 
       this.dialogFormVisible = true;
     },
     // 新增
     handleCreateOrModify() {
-      if (!this.formData.Id) {
+      if (!this.formData.id) {
         // ID 无效时 视为新增
         this.loading = true;
+        // this.formData.loginName,this.formData.password,this.formData.isAction
         createUser(this.formData)
           .then(response => {
             this.loading = false;
@@ -149,7 +150,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          deleteUser(row.Id, null)
+          deleteUser(row.id, null)
             .then(response => {
               this.loading = false;
               this.$message({
