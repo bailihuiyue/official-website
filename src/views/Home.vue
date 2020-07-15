@@ -67,7 +67,7 @@
 </template>
  
 <script>
-import { baseService, getCasesAll, getNews } from "@/services";
+import { baseService, getCasesAll, getNewsAll } from "@/services";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
   name: "HelloWorld",
@@ -124,7 +124,7 @@ export default {
     }
   },
   mounted() {
-    baseService.all([getCasesAll(), getNews({ type: 1, num: 3 })]).then(
+    baseService.all([getCasesAll(), getNewsAll({ type: 1, num: 3 })]).then(
       baseService.spread((responseCases, responseNews) => {
         this.caseList = responseCases;
         this.newsList = responseNews;

@@ -32,16 +32,6 @@ export const getCourseAll = () => {
   return baseService.get(api);
 };
 
-export const getNews = (params) => {
-  const api = `News`;
-  return baseService.get(api, { params });
-};
-
-export const getNewsById = (pid) => {
-  const api = `News/GetNewsById/${pid}`;
-  return baseService.get(api);
-};
-
 export const getDataDictionaryAll = (params) => {
   const api = `DataDictionary/GetDataDictionaryAll`;
   return baseService.get(api, { params });
@@ -112,9 +102,17 @@ export const deleteHonor = (id, formData, options) => {
   return baseService.post(api, { formData, options });
 };
 
+// export const getNews = (params) => {
+//   const api = `News`;
+//   return baseService.get(api, { params });
+// };
 export const getNewsAll = (params) => {
   const api = `News/GetNewsAll`;
   return baseService.get(api, { params });
+};
+export const getNewsById = (pid) => {
+  const api = `News/GetNewsById/${pid}`;
+  return baseService.get(api);
 };
 export const createNews = (formData, options) => {
   const api = `News/CreateNews`;
@@ -148,7 +146,7 @@ export const getUserAll = () => {
 };
 export const createUser = (formData) => {
   const api = `User/CreateUser`;
-  return baseService.post(api, {...formData});
+  return baseService.post(api, { ...formData });
 };
 export const modifiedUser = (formData) => {
   const api = `User/ModifiedUser`;
@@ -159,9 +157,9 @@ export const deleteUser = (id) => {
   return baseService.get(api);
 };
 
-export const userLogin = ({loginName,password}) => {
+export const userLogin = ({ loginName, password }) => {
   const api = `User/Login`;
-  return baseService.post(api, { loginName,password });
+  return baseService.post(api, { loginName, password });
 };
 
 export const getGoInData = () => {

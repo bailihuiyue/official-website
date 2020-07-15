@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { getNews } from "@/services";
+import { getNewsAll } from "@/services";
 import Banner from "../components/Banner";
 export default {
   name: "news",
@@ -60,7 +60,7 @@ export default {
   methods: {
     loadData() {
       this.loading = true;
-      getNews({ type: this.newstype, num: 6 })
+      getNewsAll({ type: this.newstype, num: 6 })
         .then(response => {
           //console.log(response);
           this.newsList = response;
