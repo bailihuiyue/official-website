@@ -36,7 +36,6 @@
           <el-upload
             class="avatar-uploader"
             :action="`${imgserver}api/UpLoad/UploadImage`"
-            :headers="headers"
             :show-file-list="false"
             :on-success="handleSuccess"
           >
@@ -78,26 +77,13 @@ export default {
         Del: "",
         CreateTime: new Date()
       },
-      options: {},
-      headers: {},
-      imgserver
     };
   },
   mounted() {
-    let token = "Browser " + sessionStorage.getItem("token");
-    this.options = {
-      headers: {
-        Authorization: token
-      }
-    };
-    this.headers = {
-      Authorization: token
-    };
-
     this.loadData();
   },
   methods: {
-    handleSuccess(response, file, fileList) {
+    handleSuccess(response) {
       this.formData.Img = response;
     },
     loadData() {
@@ -130,7 +116,7 @@ export default {
       if (!this.formData.Id) {
         // ID 无效时 视为新增
         this.loading = true;
-        createCases(this.formData, this.options)
+        createCases(this.formData)
           .then(response => {
             this.loading = false;
             this.$message({
@@ -148,7 +134,7 @@ export default {
           });
       } else {
         this.loading = true;
-        modifiedCases(this.formData, this.options)
+        modifiedCases(this.formData)
           .then(response => {
             this.loading = false;
             this.$message({
@@ -180,7 +166,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          deleteCases(row.Id, null, this.options)
+          deleteCases(row.Id, null)
             .then(response => {
               this.loading = false;
               this.$message({

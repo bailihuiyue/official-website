@@ -44,7 +44,6 @@
           <el-upload
             class="avatar-uploader"
             :action="`${imgserver}api/UpLoad/UploadImage`"
-            :headers="headers"
             :show-file-list="false"
             :on-success="handleSuccess"
           >
@@ -75,7 +74,6 @@ export default {
   data() {
     return {
       options: {},
-      headers: {},
       tableData: [],
       formData: {
         Id: 0,
@@ -91,20 +89,10 @@ export default {
     };
   },
   mounted() {
-    let token = "Browser " + sessionStorage.getItem("token");
-    this.options = {
-      headers: {
-        Authorization: token
-      }
-    };
-    this.headers = {
-      Authorization: token
-    };
-
     this.loadData();
   },
   methods: {
-    handleSuccess(response, file, fileList) {
+    handleSuccess(response) {
       this.formData.Img = response;
     },
     loadData() {
@@ -135,7 +123,7 @@ export default {
     handleCreateOrModify() {
       if (!this.formData.Id) {
         this.loading = true;
-        createNews(this.formData, this.options)
+        createNews(this.formData)
           .then(response => {
             this.loading = false;
             this.$message({
@@ -153,7 +141,7 @@ export default {
           });
       } else {
         this.loading = true;
-        modifiedNews(this.formData, this.options)
+        modifiedNews(this.formData)
           .then(response => {
             this.loading = false;
             this.$message({
@@ -187,7 +175,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          deleteNews(row.Id, null, this.options)
+          deleteNews(row.Id, null)
             .then(response => {
               this.loading = false;
               this.$message({

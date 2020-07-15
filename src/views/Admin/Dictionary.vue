@@ -58,17 +58,9 @@ export default {
         Content: "",
         CreateTime: new Date()
       },
-      options: {}
     };
   },
   mounted() {
-    let token = "Browser " + sessionStorage.getItem("token");
-    this.options = {
-      headers: {
-        Authorization: token
-      }
-    };
-
     this.loadData();
   },
   methods: {
@@ -100,7 +92,7 @@ export default {
       if (!this.formData.Id) {
         // ID 无效时 视为新增
         this.loading = true;
-        createDataDictionary(this.formData, this.options)
+        createDataDictionary(this.formData)
           .then(response => {
             this.loading = false;
             this.$message({
@@ -118,7 +110,7 @@ export default {
           });
       } else {
         this.loading = true;
-        modifiedDataDictionary(this.formData, this.options)
+        modifiedDataDictionary(this.formData)
           .then(response => {
             this.loading = false;
             this.$message({
@@ -150,7 +142,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          deleteDataDictionary(row.Id, null, this.options)
+          deleteDataDictionary(row.Id, null)
             .then(response => {
               this.loading = false;
               this.$message({

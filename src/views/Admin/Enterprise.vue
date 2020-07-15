@@ -71,25 +71,13 @@ export default {
         Remark: "",
         CreateTime: new Date()
       },
-      options: {},
-      headers: {},
-      imgserver
     };
   },
   mounted() {
-    let token = "Browser " + sessionStorage.getItem("token");
-    this.options = {
-      headers: {
-        Authorization: token
-      }
-    };
-    this.headers = {
-      Authorization: token
-    };
     this.loadData();
   },
   methods: {
-    handleSuccess(response, file, fileList) {
+    handleSuccess(response) {
       this.formData.Img = response;
     },
     loadData() {
@@ -120,7 +108,7 @@ export default {
       if (!this.formData.Id) {
         // ID 无效时 视为新增
         this.loading = true;
-        createDataEnterprise(this.formData, this.options)
+        createDataEnterprise(this.formData)
           .then(response => {
             this.loading = false;
             this.$message({
@@ -138,7 +126,7 @@ export default {
           });
       } else {
         this.loading = true;
-        modifiedEnterprise(this.formData, this.options)
+        modifiedEnterprise(this.formData)
           .then(response => {
             this.loading = false;
             this.$message({
@@ -170,7 +158,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          deleteEnterprise(row.Id, null, this.options)
+          deleteEnterprise(row.Id, null)
             .then(response => {
               this.loading = false;
               this.$message({
