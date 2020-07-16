@@ -3,9 +3,9 @@
     <el-button type="primary" @click="openDialog()">新增用户</el-button>
 
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
-      <el-table-column prop="Id" label="序号" width="80"></el-table-column>
+      <el-table-column prop="id" label="序号" width="80"></el-table-column>
       <el-table-column prop="Key" label="键" width="180"></el-table-column>
-      <el-table-column prop="Content" label="值"></el-table-column>
+      <el-table-column prop="content" label="值"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
@@ -27,7 +27,7 @@
           <el-input v-model="formData.Key" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="数据键" :label-width="formLabelWidth">
-          <el-input v-model="formData.Content" autocomplete="off"></el-input>
+          <el-input v-model="formData.content" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -53,10 +53,10 @@ export default {
       formLabelWidth: "120px",
       tableData: [],
       formData: {
-        Id: 0,
+        id: 0,
         Key: "",
-        Content: "",
-        CreateTime: new Date()
+        content: "",
+        createTime: new Date()
       },
     };
   },
@@ -80,16 +80,16 @@ export default {
     },
     openDialog() {
       // 清除数据
-      this.formData.Id = 0;
+      this.formData.id = 0;
       this.formData.Key = "";
-      this.formData.Content = "";
-      this.formData.CreateTime = new Date();
+      this.formData.content = "";
+      this.formData.createTime = new Date();
 
       this.dialogFormVisible = true;
     },
     // 新增
     handleCreateOrModify() {
-      if (!this.formData.Id) {
+      if (!this.formData.id) {
         // ID 无效时 视为新增
         this.loading = true;
         createDataDictionary(this.formData)
@@ -142,7 +142,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          deleteDataDictionary(row.Id, null)
+          deleteDataDictionary(row.id, null)
             .then(response => {
               this.loading = false;
               this.$message({
@@ -167,8 +167,8 @@ export default {
     },
     //时间格式化
     dateFormat: function(row) {
-      //row 表示一行数据, CreateTime 表示要格式化的字段名称
-      let t = new Date(row.CreateTime);
+      //row 表示一行数据, createTime 表示要格式化的字段名称
+      let t = new Date(row.createTime);
       return t.getFullYear() + "-" + (t.getMonth() + 1) + "-" + t.getDate();
     }
   }

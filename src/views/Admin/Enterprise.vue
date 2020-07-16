@@ -3,10 +3,10 @@
     <el-button type="primary" @click="openDialog()">新增数据</el-button>
 
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
-      <el-table-column prop="Id" label="序号" width="80"></el-table-column>
-      <el-table-column prop="Img" label="企业Logo">
+      <el-table-column prop="id" label="序号" width="80"></el-table-column>
+      <el-table-column prop="img" label="企业Logo">
         <template slot-scope="scope">
-          <img style="width:200px" :src="imgserver+scope.row.Img" alt />
+          <img style="width:200px" :src="imgserver+scope.row.img" alt />
         </template>
       </el-table-column>
       <el-table-column prop="Remark" label="企业名称" width="180"></el-table-column>
@@ -35,7 +35,7 @@
             :show-file-list="false"
             :on-success="handleSuccess"
           >
-            <img v-if="formData.Img" :src="imgserver+formData.Img" class="avatar" />
+            <img v-if="formData.img" :src="imgserver+formData.img" class="avatar" />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
@@ -66,10 +66,10 @@ export default {
       formLabelWidth: "120px",
       tableData: [],
       formData: {
-        Id: 0,
-        Img: "",
+        id: 0,
+        img: "",
         Remark: "",
-        CreateTime: new Date()
+        createTime: new Date()
       }
     };
   },
@@ -103,16 +103,16 @@ export default {
     },
     openDialog() {
       // 清除数据
-      this.formData.Id = 0;
-      this.formData.Img = "";
+      this.formData.id = 0;
+      this.formData.img = "";
       this.formData.Remark = "";
-      this.formData.CreateTime = new Date();
+      this.formData.createTime = new Date();
 
       this.dialogFormVisible = true;
     },
     // 新增
     handleCreateOrModify() {
-      if (!this.formData.Id) {
+      if (!this.formData.id) {
         // ID 无效时 视为新增
         this.loading = true;
         createDataEnterprise(this.formData)
@@ -165,7 +165,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          deleteEnterprise(row.Id, null)
+          deleteEnterprise(row.id, null)
             .then(response => {
               this.loading = false;
               this.$message({
@@ -190,8 +190,8 @@ export default {
     },
     //时间格式化
     dateFormat: function(row) {
-      //row 表示一行数据, CreateTime 表示要格式化的字段名称
-      let t = new Date(row.CreateTime);
+      //row 表示一行数据, createTime 表示要格式化的字段名称
+      let t = new Date(row.createTime);
       return t.getFullYear() + "-" + (t.getMonth() + 1) + "-" + t.getDate();
     }
   }

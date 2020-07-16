@@ -17,14 +17,14 @@
           <li
             v-for="(item,index) in caseList"
             :key="index"
-            v-lazy:background-image="imgserver + item.Img"
+            v-lazy:background-image="imgserver + item.img"
           >
             <router-link
               class="text-decoration"
-              :to="{ name: 'casedetails', params: { id: item.Id }}"
+              :to="{ name: 'casedetails', params: { id: item.id }}"
             >
               <div class="case-item-hover">
-                <p class="hover-title">{{item.Title}}</p>
+                <p class="hover-title">{{item.title}}</p>
                 <div class="bottom"></div>
                 <div class="more">
                   <span>MORE</span>
@@ -44,9 +44,9 @@
             <div :style="'order: '+ (i%2==0 ? 1: 3)">
               <router-link
                 class="text-decoration"
-                :to="{ name: 'newsdetails', params: { id: news.Id }}"
+                :to="{ name: 'newsdetails', params: { id: news.id }}"
               >
-                <div class="item-img" v-lazy:background-image="imgserver + news.Img"></div>
+                <div class="item-img" v-lazy:background-image="imgserver + news.img"></div>
               </router-link>
             </div>
             <div style="order: 2">
@@ -55,9 +55,9 @@
               </el-divider>
             </div>
             <div class="item-content" :style="'order: '+ (i%2==0 ? 3: 1)">
-              <h3>{{news.Title}}</h3>
-              <p>{{news.Content}}</p>
-              <span>{{news.CreateTime}}</span>
+              <h3>{{news.title}}</h3>
+              <p>{{news.content}}</p>
+              <span>{{news.createTime}}</span>
             </div>
           </div>
         </div>

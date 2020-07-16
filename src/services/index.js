@@ -60,7 +60,7 @@ export const modifiedCourse = (formData, options) => {
 };
 export const deleteCourse = (id, formData, options) => {
   const api = `Cases/DeleteCases?id=${id}`;
-  return baseService.post(api, { formData, options });
+  return baseService.get(api, { formData, options });
 };
 
 export const createDataDictionary = (formData, options) => {
@@ -73,7 +73,7 @@ export const modifiedDataDictionary = (formData, options) => {
 };
 export const deleteDataDictionary = (id, formData, options) => {
   const api = `DataDictionary/DeleteDataDictionary?id=${id}`;
-  return baseService.post(api, { formData, options });
+  return baseService.get(api, { formData, options });
 };
 
 export const createDataEnterprise = (formData, options) => {
@@ -86,7 +86,7 @@ export const modifiedEnterprise = (formData, options) => {
 };
 export const deleteEnterprise = (id, formData, options) => {
   const api = `Enterprise/DeleteEnterprise?id=${id}`;
-  return baseService.post(api, { formData, options });
+  return baseService.get(api, { formData, options });
 };
 
 export const createHonor = (formData, options) => {
@@ -99,7 +99,7 @@ export const modifiedHonor = (formData, options) => {
 };
 export const deleteHonor = (id, formData, options) => {
   const api = `Honor/DeleteHonor?id=${id}`;
-  return baseService.post(api, { formData, options });
+  return baseService.get(api, { formData, options });
 };
 
 // export const getNews = (params) => {
@@ -114,17 +114,17 @@ export const getNewsById = (pid) => {
   const api = `News/GetNewsById/${pid}`;
   return baseService.get(api);
 };
-export const createNews = (formData, options) => {
+export const createNews = (formData) => {
   const api = `News/CreateNews`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const modifiedNews = (formData, options) => {
+export const modifiedNews = (formData) => {
   const api = `News/ModifiedNews`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const deleteNews = (id, formData, options) => {
+export const deleteNews = (id) => {
   const api = `News/DeleteNews?id=${id}`;
-  return baseService.post(api, { formData, options });
+  return baseService.get(api);
 };
 
 export const createTeam = (formData, options) => {
@@ -137,7 +137,7 @@ export const modifiedTeam = (formData, options) => {
 };
 export const deleteTeam = (id, formData, options) => {
   const api = `Team/DeleteTeam?id=${id}`;
-  return baseService.post(api, { formData, options });
+  return baseService.get(api, { formData, options });
 };
 
 export const getUserAll = () => {

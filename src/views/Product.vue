@@ -153,7 +153,7 @@ export default {
       key: "%E4%BA%A7%E5%93%81%E8%A7%86%E9%A2%91%E9%93%BE%E6%8E%A5"
     })
       .then(response => {
-        this.videoSrc = response[0] && response[0].Content;
+        this.videoSrc = response[0] && response[0].content;
         this.loading = false;
       })
       .catch(function(e) {

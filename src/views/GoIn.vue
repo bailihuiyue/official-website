@@ -45,7 +45,7 @@
                     </el-divider>
                     <div class="item-bottom" :class="{'order' : one%2===1}">
                       <div class="item-bottom-content">
-                        <p>{{courseOne.Content}}</p>
+                        <p>{{courseOne.content}}</p>
                         <p>{{courseOne.Year}}</p>
                       </div>
                     </div>
@@ -82,8 +82,8 @@
           <ul class="honor-show">
             <li v-for="(honor,index) in honorList" :key="index">
               <img
-                v-lazy="imgserver+honor.Img"
-                @click="dialogTableVisible = true ;dialogUrl = imgserver + honor.Img;dialogTitle= honor.Remark"
+                v-lazy="imgserver+honor.img"
+                @click="dialogTableVisible = true ;dialogUrl = imgserver + honor.img;dialogTitle= honor.Remark"
               />
             </li>
           </ul>
@@ -97,7 +97,7 @@
           </div>
           <el-carousel :interval="4000" type="card">
             <el-carousel-item v-for="(team,index) in teamItem" :key="index">
-              <div class="swiper-img" v-lazy:background-image="imgserver + team.Img"></div>
+              <div class="swiper-img" v-lazy:background-image="imgserver + team.img"></div>
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -108,7 +108,7 @@
             <p>RARTNERS</p>
             <ul class="partner-img">
               <li v-for="(partner,i) in partnerImg" :key="i">
-                <img v-lazy="imgserver+partner.Img" alt />
+                <img v-lazy="imgserver+partner.img" alt />
               </li>
             </ul>
           </div>

@@ -3,10 +3,10 @@
     <banner img="../assets/img/bgtop.jpg" />
     <div class="NewsDetails-product">
       <div class="NewsDetails-product-content">
-        <img v-lazy="imgserver+newsIdList.Img" alt />
-        <p class="product-title">{{newsIdList.Title}}</p>
-        <p class="product-time">{{newsIdList.CreateTime}}</p>
-        <p class="product-content">{{newsIdList.Content}}</p>
+        <img v-lazy="imgserver+newsIdList.img" alt />
+        <p class="product-title">{{newsIdList.title}}</p>
+        <p class="product-time">{{newsIdList.createTime}}</p>
+        <p class="product-content">{{newsIdList.content}}</p>
       </div>
     </div>
   </div>
