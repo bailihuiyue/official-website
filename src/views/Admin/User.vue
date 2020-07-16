@@ -3,7 +3,7 @@
     <el-button type="primary" @click="openDialog()">新增用户</el-button>
     <el-button type="danger" @click="logout">退出登录</el-button>
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
-      <el-table-column prop="id" label="序号"></el-table-column>
+      <el-table-column prop="id" label="序号" width="80"></el-table-column>
       <el-table-column prop="loginName" label="用户名"></el-table-column>
       <el-table-column prop="isAction" label="是否启用">
         <template slot-scope="scope">{{ scope.row.isAction ? '是':'否' }}</template>

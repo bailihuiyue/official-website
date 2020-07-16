@@ -4,14 +4,14 @@
     <div class="case-section" v-loading="loading">
       <div class="case-section-content">
         <div class="case-section-content-list" v-for="(cas,index) in caseList" :key="index">
-          <img v-lazy="imgserver+cas.Img" />
+          <img v-lazy="imgserver+cas.img" />
           <div class="content-list-abstract" :class="{'abstract-active' : index%2!=1}">
-            <p class="abstract-title">{{cas.Title}}</p>
-            <p class="abstract-content">{{cas.Content}}</p>
+            <p class="abstract-title">{{cas.title}}</p>
+            <p class="abstract-content">{{cas.content}}</p>
             <div class="more">
               <router-link
                 class="text-decoration"
-                :to="{ name: 'casedetails', params: { id: cas.Id }}"
+                :to="{ name: 'casedetails', params: { id: cas.id }}"
               >
                 <span>more</span>
                 <img src="../assets/img/sanjiao.png" />
@@ -39,7 +39,6 @@ export default {
   mounted() {
     getCasesAll()
       .then(response => {
-        //console.log(response);
         this.caseList = response;
         this.loading = false;
       })
@@ -61,7 +60,6 @@ export default {
     width: 100%;
     &-content {
       width: 1240px;
-      min-height: 1000px;
       margin: 0 auto;
       background-color: #fff;
 
@@ -74,8 +72,8 @@ export default {
         border: 1px solid pink;
 
         img {
-          width: 612px;
-          height: 314px;
+          max-width: 612px;
+          max-height: 314px;
         }
         .content-list-abstract {
           width: 290px;

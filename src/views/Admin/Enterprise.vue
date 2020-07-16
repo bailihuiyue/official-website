@@ -3,7 +3,7 @@
     <el-button type="primary" @click="openDialog()">新增数据</el-button>
 
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
-      <el-table-column prop="Id" label="序号" width="180"></el-table-column>
+      <el-table-column prop="Id" label="序号" width="80"></el-table-column>
       <el-table-column prop="Img" label="企业Logo">
         <template slot-scope="scope">
           <img style="width:200px" :src="imgserver+scope.row.Img" alt />

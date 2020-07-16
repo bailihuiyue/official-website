@@ -3,10 +3,10 @@
     <banner img="../assets/img/bgtop.jpg" />
     <div class="case-product">
       <div class="case-product-content">
-        <img v-lazy="imgserver+caseIdList.Img" alt />
-        <p class="product-title">{{caseIdList.Title}}</p>
-        <p class="product-time">{{caseIdList.CreateTime}}</p>
-        <p class="product-content">{{caseIdList.Content}}</p>
+        <img v-lazy="imgserver+caseIdList.img" alt />
+        <p class="product-title">{{caseIdList.title}}</p>
+        <p class="product-time">{{caseIdList.createTime}}</p>
+        <p class="product-content">{{caseIdList.content}}</p>
       </div>
     </div>
   </div>
@@ -35,7 +35,6 @@ export default {
     loadData() {
       getCasesById(this.pid)
         .then(response => {
-          //console.log(response);
           this.caseIdList = response;
         })
         .catch(function(e) {
@@ -69,7 +68,7 @@ export default {
       padding: 50px 0;
       img {
         width: 100%;
-        height: 430px;
+        min-height: 430px;
       }
       .product-title {
         font-size: 25px;

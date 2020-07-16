@@ -37,17 +37,17 @@ export const getDataDictionaryAll = (params) => {
   return baseService.get(api, { params });
 };
 
-export const createCases = (formData, options) => {
+export const createCases = (formData) => {
   const api = `Cases/CreateCases`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const modifiedCases = (formData, options) => {
+export const modifiedCases = (formData) => {
   const api = `Cases/ModifiedCases`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const deleteCases = (id, formData, options) => {
+export const deleteCases = (id) => {
   const api = `Cases/DeleteCases?id=${id}`;
-  return baseService.post(api, { formData, options });
+  return baseService.get(api);
 };
 
 export const createCourse = (formData, options) => {

@@ -30,7 +30,6 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   (res) => {
-    debugger;
     if (res.status === 200) {
       if (res.data.data) {
         return res.data.data;

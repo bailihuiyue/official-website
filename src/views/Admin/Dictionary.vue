@@ -3,7 +3,7 @@
     <el-button type="primary" @click="openDialog()">新增用户</el-button>
 
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
-      <el-table-column prop="Id" label="序号" width="180"></el-table-column>
+      <el-table-column prop="Id" label="序号" width="80"></el-table-column>
       <el-table-column prop="Key" label="键" width="180"></el-table-column>
       <el-table-column prop="Content" label="值"></el-table-column>
       <el-table-column label="操作">

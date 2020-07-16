@@ -5,9 +5,9 @@
     <el-table :data="tableData" border style="width: 100%" v-loading="loading">
       <el-table-column prop="Id" label="序号" width="180"></el-table-column>
       <el-table-column prop="Title" label="新闻标题" width="180"></el-table-column>
-      <el-table-column prop="Img" label="图片">
+      <el-table-column prop="Img" label="图片" width="200">
         <template slot-scope="scope">
-          <img style="width:100%" :src="imgserver + scope.row.Img" alt />
+          <img style="width:200px" :src="imgserver + scope.row.Img" alt />
         </template>
       </el-table-column>
       <el-table-column prop="Content" label="新闻内容">

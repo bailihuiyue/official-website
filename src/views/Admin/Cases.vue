@@ -3,15 +3,15 @@
     <el-button type="primary" @click="openDialog()">新增案例</el-button>
 
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
-      <el-table-column prop="id" label="序号" width="180"></el-table-column>
-      <el-table-column prop="title" label="案例标题" width="180"></el-table-column>
-      <el-table-column prop="img" label="图片">
+      <el-table-column prop="id" label="序号" width="80"></el-table-column>
+      <el-table-column prop="title" label="案例标题" width="300"></el-table-column>
+      <el-table-column prop="img" label="图片" width="220">
         <template slot-scope="scope">
-          <img style="width:100%" :src="imgserver+scope.row.img" alt />
+          <img style="width:200px" :src="imgserver+scope.row.img" alt />
         </template>
       </el-table-column>
       <el-table-column prop="content" label="案例内容"></el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="操作" width="160">
         <template slot-scope="scope">
           <el-button
             type="primary"
@@ -124,7 +124,7 @@ export default {
     },
     // 新增
     handleCreateOrModify() {
-      if (!this.formData.Id) {
+      if (!this.formData.id) {
         // ID 无效时 视为新增
         this.loading = true;
         createCases(this.formData)
@@ -177,7 +177,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          deleteCases(row.Id, null)
+          deleteCases(row.id)
             .then(response => {
               this.loading = false;
               this.$message({
