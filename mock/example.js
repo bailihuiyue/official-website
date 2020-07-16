@@ -85,21 +85,21 @@ module.exports = {
   "post /Cases/DeleteCases": { data: true },
   //
   "/Course/GetCourseAll": [
-    { id: 10, Year: "2012年9月", content: "上海韭菜工程管理有限公司成立" },
+    { id: 10, year: "2012年9月", content: "上海韭菜工程管理有限公司成立" },
     {
       id: 11,
-      Year: "2016年11月",
+      year: "2016年11月",
       content:
         "上海韭菜工程管理股份有限公司“工程管理标准化+互联网协作平台“开发上线，并成功投入项目使用。",
     },
     {
       id: 12,
-      Year: "2017年11月",
+      year: "2017年11月",
       content: "上海韭菜工程管理股份有限公司获得高新技术企业证书",
     },
     {
       id: 14,
-      Year: "2018年3月",
+      year: "2018年3月",
       content: "上海韭菜工程管理股份有限公司股份改制成功。",
     },
   ],
@@ -112,7 +112,7 @@ module.exports = {
   "post /Enterprise/ModifiedEnterprise": { data: true },
   "post /Enterprise/DeleteEnterprise": { data: true },
   //
-  "/DataDictionary/GetDataDictionaryAll": {
+  "/Dictionary/GetDictionaryAll": {
     data: [
       { id: 1, Key: "首页主标题", content: "立人立己 达人达己" },
       { id: 2, Key: "首页副标题", content: "" },
@@ -148,9 +148,9 @@ module.exports = {
       { id: 20, Key: "APP下载地址", content: "../static/home_top.jpg" },
     ],
   },
-  "post /DataDictionary/CreateDataDictionary": { data: true },
-  "post /DataDictionary/ModifiedDataDictionary": { data: true },
-  "post /DataDictionary/DeleteDataDictionary": { data: true },
+  "post /Dictionary/CreateDictionary": { data: true },
+  "post /Dictionary/ModifiedDictionary": { data: true },
+  "post /Dictionary/DeleteDictionary": { data: true },
   //
   "/Honor/GetHonorAll": {
     data: [

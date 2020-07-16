@@ -32,8 +32,8 @@ export const getCourseAll = () => {
   return baseService.get(api);
 };
 
-export const getDataDictionaryAll = (params) => {
-  const api = `DataDictionary/GetDataDictionaryAll`;
+export const getDictionaryAll = (params) => {
+  const api = `Dictionary/GetDictionaryAll`;
   return baseService.get(api, { params });
 };
 
@@ -59,20 +59,20 @@ export const modifiedCourse = (formData) => {
   return baseService.post(api, { ...formData });
 };
 export const deleteCourse = (id, formData) => {
-  const api = `Cases/DeleteCases?id=${id}`;
+  const api = `Course/DeleteCourse?id=${id}`;
   return baseService.get(api, { ...formData });
 };
 
-export const createDataDictionary = (formData) => {
-  const api = `DataDictionary/CreateDataDictionary`;
+export const createDictionary = (formData) => {
+  const api = `Dictionary/CreateDictionary`;
   return baseService.post(api, { ...formData });
 };
-export const modifiedDataDictionary = (formData) => {
-  const api = `DataDictionary/ModifiedDataDictionary`;
+export const modifiedDictionary = (formData) => {
+  const api = `Dictionary/ModifiedDictionary`;
   return baseService.post(api, { ...formData });
 };
-export const deleteDataDictionary = (id) => {
-  const api = `DataDictionary/DeleteDataDictionary?id=${id}`;
+export const deleteDictionary = (id) => {
+  const api = `Dictionary/DeleteDictionary?id=${id}`;
   return baseService.get(api);
 };
 

@@ -46,7 +46,7 @@
                     <div class="item-bottom" :class="{'order' : one%2===1}">
                       <div class="item-bottom-content">
                         <p>{{courseOne.content}}</p>
-                        <p>{{courseOne.Year}}</p>
+                        <p>{{courseOne.year}}</p>
                       </div>
                     </div>
                   </div>

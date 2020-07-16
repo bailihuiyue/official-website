@@ -4,9 +4,9 @@
 
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
       <el-table-column prop="id" label="序号" width="80"></el-table-column>
-      <el-table-column prop="Year" label="历程年份" width="180"></el-table-column>
+      <el-table-column prop="year" label="历程年份" width="180"></el-table-column>
       <el-table-column prop="content" label="历程内容"></el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="操作" width="160">
         <template slot-scope="scope">
           <el-button
             type="primary"
@@ -24,7 +24,7 @@
     <el-dialog title="发展历程编辑" :visible.sync="dialogFormVisible">
       <el-form :model="formData">
         <el-form-item label="历程年份" :label-width="formLabelWidth">
-          <el-input v-model="formData.Year" autocomplete="off"></el-input>
+          <el-input v-model="formData.year" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="历程内容" :label-width="formLabelWidth">
           <el-input v-model="formData.content" autocomplete="off"></el-input>

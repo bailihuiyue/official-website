@@ -4,9 +4,9 @@
 
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
       <el-table-column prop="id" label="序号" width="80"></el-table-column>
-      <el-table-column prop="Key" label="键" width="180"></el-table-column>
+      <el-table-column prop="dictKey" label="键" width="180"></el-table-column>
       <el-table-column prop="content" label="值"></el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="操作" width="180">
         <template slot-scope="scope">
           <el-button
             type="primary"
@@ -24,7 +24,7 @@
     <el-dialog title="案例编辑" :visible.sync="dialogFormVisible">
       <el-form :model="formData">
         <el-form-item label="数据键" :label-width="formLabelWidth">
-          <el-input v-model="formData.Key" autocomplete="off"></el-input>
+          <el-input v-model="formData.dictKey" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="数据键" :label-width="formLabelWidth">
           <el-input v-model="formData.content" autocomplete="off"></el-input>
@@ -40,10 +40,10 @@
 
 <script>
 import {
-  getDataDictionaryAll,
-  createDataDictionary,
-  modifiedDataDictionary,
-  deleteDataDictionary
+  getDictionaryAll,
+  createDictionary,
+  modifiedDictionary,
+  deleteDictionary
 } from "@/services";
 export default {
   data() {
@@ -54,7 +54,7 @@ export default {
       tableData: [],
       formData: {
         id: 0,
-        Key: "",
+        dictKey: "",
         content: "",
         createTime: new Date()
       },
@@ -66,7 +66,7 @@ export default {
   methods: {
     loadData() {
       this.loading = true;
-      getDataDictionaryAll({ key: "" })
+      getDictionaryAll({ dictKey: "" })
         .then(response => {
           this.tableData = response;
           this.loading = false;
@@ -81,7 +81,7 @@ export default {
     openDialog() {
       // 清除数据
       this.formData.id = 0;
-      this.formData.Key = "";
+      this.formData.dictKey = "";
       this.formData.content = "";
       this.formData.createTime = new Date();
 
@@ -92,7 +92,7 @@ export default {
       if (!this.formData.id) {
         // ID 无效时 视为新增
         this.loading = true;
-        createDataDictionary(this.formData)
+        createDictionary(this.formData)
           .then(response => {
             this.loading = false;
             this.$message({
@@ -110,7 +110,7 @@ export default {
           });
       } else {
         this.loading = true;
-        modifiedDataDictionary(this.formData)
+        modifiedDictionary(this.formData)
           .then(response => {
             this.loading = false;
             this.$message({
@@ -142,7 +142,7 @@ export default {
           // 已确认删除
           // 调接口删除
           this.loading = true;
-          deleteDataDictionary(row.id, null)
+          deleteDictionary(row.id, null)
             .then(response => {
               this.loading = false;
               this.$message({
