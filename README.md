@@ -4,8 +4,8 @@
 > Shanghai jiucai engineering management
 > 韭菜工程管理有限公司企业官网 前端    
 
-作者Github:https://github.com/ifzc/Shkjem     
-后端C#:https://github.com/ifzc/ShkjemApi 
+后端JAVA:https://github.com/bailihuiyue/offical-website-backend
+原作者Github:https://github.com/ifzc/Shkjem
 
 ## 新版本改进
 1. 整体重构，结构升级为最新 vue-cli
