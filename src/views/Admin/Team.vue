@@ -4,13 +4,13 @@
 
     <el-table border :data="tableData" v-loading="loading" style="width: 100%">
       <el-table-column prop="id" label="序号" width="80"></el-table-column>
-      <el-table-column prop="img" label="图片">
+      <el-table-column prop="img" label="图片" width="220">
         <template slot-scope="scope">
           <img style="width:200px" :src="imgserver+scope.row.img" alt />
         </template>
       </el-table-column>
-      <el-table-column prop="Remark" label="备注"></el-table-column>
-      <el-table-column label="操作">
+      <el-table-column prop="remark" label="备注"></el-table-column>
+      <el-table-column label="操作" width="160">
         <template slot-scope="scope">
           <el-button
             type="primary"
@@ -33,13 +33,14 @@
             :action="`${imgserver}api/Upload/UploadImage`"
             :show-file-list="false"
             :on-success="handleSuccess"
+            :headers="headers"
           >
             <img v-if="formData.img" :src="imgserver+formData.img" class="avatar" />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
         <el-form-item label="备注" :label-width="formLabelWidth">
-          <el-input v-model="formData.Remark" autocomplete="off"></el-input>
+          <el-input v-model="formData.remark" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -62,10 +63,13 @@ export default {
       formData: {
         id: 0,
         img: "",
-        Remark: "",
+        remark: "",
         createTime: new Date()
       },
-      options: {}
+      options: {},
+      headers: {
+        token: window.sessionStorage.getItem("token")
+      }
     };
   },
   mounted() {
@@ -100,7 +104,7 @@ export default {
       // 清除数据
       this.formData.id = 0;
       this.formData.img = "";
-      this.formData.Remark = "";
+      this.formData.remark = "";
       this.formData.createTime = new Date();
 
       this.dialogFormVisible = true;

@@ -83,7 +83,7 @@
             <li v-for="(honor,index) in honorList" :key="index">
               <img
                 v-lazy="imgserver+honor.img"
-                @click="dialogTableVisible = true ;dialogUrl = imgserver + honor.img;dialogTitle= honor.Remark"
+                @click="dialogTableVisible = true ;dialogUrl = imgserver + honor.img;dialogTitle= honor.remark"
               />
             </li>
           </ul>

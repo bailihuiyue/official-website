@@ -50,56 +50,56 @@ export const deleteCases = (id) => {
   return baseService.get(api);
 };
 
-export const createCourse = (formData, options) => {
+export const createCourse = (formData) => {
   const api = `Course/CreateCourse`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const modifiedCourse = (formData, options) => {
+export const modifiedCourse = (formData) => {
   const api = `Course/ModifiedCourse`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const deleteCourse = (id, formData, options) => {
+export const deleteCourse = (id, formData) => {
   const api = `Cases/DeleteCases?id=${id}`;
-  return baseService.get(api, { formData, options });
+  return baseService.get(api, { ...formData });
 };
 
-export const createDataDictionary = (formData, options) => {
+export const createDataDictionary = (formData) => {
   const api = `DataDictionary/CreateDataDictionary`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const modifiedDataDictionary = (formData, options) => {
+export const modifiedDataDictionary = (formData) => {
   const api = `DataDictionary/ModifiedDataDictionary`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const deleteDataDictionary = (id, formData, options) => {
+export const deleteDataDictionary = (id) => {
   const api = `DataDictionary/DeleteDataDictionary?id=${id}`;
-  return baseService.get(api, { formData, options });
+  return baseService.get(api);
 };
 
-export const createDataEnterprise = (formData, options) => {
+export const createDataEnterprise = (formData) => {
   const api = `Enterprise/CreateEnterprise`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const modifiedEnterprise = (formData, options) => {
+export const modifiedEnterprise = (formData) => {
   const api = `Enterprise/ModifiedEnterprise`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const deleteEnterprise = (id, formData, options) => {
+export const deleteEnterprise = (id) => {
   const api = `Enterprise/DeleteEnterprise?id=${id}`;
-  return baseService.get(api, { formData, options });
+  return baseService.get(api);
 };
 
-export const createHonor = (formData, options) => {
+export const createHonor = (formData) => {
   const api = `Honor/CreateHonor`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const modifiedHonor = (formData, options) => {
+export const modifiedHonor = (formData) => {
   const api = `Honor/ModifiedHonor`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const deleteHonor = (id, formData, options) => {
+export const deleteHonor = (id) => {
   const api = `Honor/DeleteHonor?id=${id}`;
-  return baseService.get(api, { formData, options });
+  return baseService.get(api);
 };
 
 // export const getNews = (params) => {
@@ -127,17 +127,17 @@ export const deleteNews = (id) => {
   return baseService.get(api);
 };
 
-export const createTeam = (formData, options) => {
+export const createTeam = (formData) => {
   const api = `Team/CreateTeam`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const modifiedTeam = (formData, options) => {
+export const modifiedTeam = (formData) => {
   const api = `Team/ModifiedTeam`;
-  return baseService.post(api, { formData, options });
+  return baseService.post(api, { ...formData });
 };
-export const deleteTeam = (id, formData, options) => {
+export const deleteTeam = (id) => {
   const api = `Team/DeleteTeam?id=${id}`;
-  return baseService.get(api, { formData, options });
+  return baseService.get(api);
 };
 
 export const getUserAll = () => {
@@ -170,13 +170,3 @@ export const getGoInData = () => {
     getCourseAll(),
   ]);
 };
-
-// export const getInvoiceImg = (cabinetUuid) => {
-//   const api = "/api/v1/getInvoiceImg";
-//   return baseService.get(api, { params: { cabinetUuid } });
-// };
-
-// export const submitTask = (data) => {
-//   const api = "/api/v1/submitTask";
-//   return baseService.post(api, { ...data });
-// };

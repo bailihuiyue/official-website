@@ -9,7 +9,7 @@
           <img style="width:200px" :src="imgserver+scope.row.img" alt />
         </template>
       </el-table-column>
-      <el-table-column prop="Remark" label="荣誉标题" width="180"></el-table-column>
+      <el-table-column prop="remark" label="荣誉标题" width="180"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
@@ -39,7 +39,7 @@
           </el-upload>
         </el-form-item>
         <el-form-item label="荣誉标题" :label-width="formLabelWidth">
-          <el-input v-model="formData.Remark" autocomplete="off"></el-input>
+          <el-input v-model="formData.remark" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -67,7 +67,7 @@ export default {
       formData: {
         id: 0,
         img: "",
-        Remark: "",
+        remark: "",
         createTime: new Date()
       }
     };
@@ -104,7 +104,7 @@ export default {
       // 清除数据
       this.formData.id = 0;
       this.formData.img = "";
-      this.formData.Remark = "";
+      this.formData.remark = "";
       this.formData.createTime = new Date();
 
       this.dialogFormVisible = true;
