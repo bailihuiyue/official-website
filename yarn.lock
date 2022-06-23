@@ -4961,11 +4961,6 @@ isexe@^2.0.0:
   resolved "https://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
-ismobilejs@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.npm.taobao.org/ismobilejs/download/ismobilejs-1.1.1.tgz?cache=0&sync_timestamp=1586902809632&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fismobilejs%2Fdownload%2Fismobilejs-1.1.1.tgz#c56ca0ae8e52b24ca0f22ba5ef3215a2ddbbaa0e"
-  integrity sha1-xWygro5Sskyg8iul7zIVot27qg4=
-
 isobject@^2.0.0:
   version "2.1.0"
   resolved "https://registry.npm.taobao.org/isobject/download/isobject-2.1.0.tgz#f065561096a3f1da2ef46272f815c840d87e0c89"
@@ -7598,9 +7593,9 @@ shebang-regex@^3.0.0:
   integrity sha1-rhbxZE2HPsrYQ7AwexQzYtTEIXI=
 
 shell-quote@^1.6.1:
-  version "1.7.2"
-  resolved "https://registry.npm.taobao.org/shell-quote/download/shell-quote-1.7.2.tgz#67a7d02c76c9da24f99d20808fcaded0e0e04be2"
-  integrity sha1-Z6fQLHbJ2iT5nSCAj8re0ODgS+I=
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.7.3.tgz#aa40edac170445b9a431e17bb62c0b881b9c4123"
+  integrity sha512-Vpfqwm4EnqGdlsBFNmHhxhElJYrdfcxPThu+ryKS5J8L/fhAwLazFZtq+S+TWZ9ANj2piSQLGj6NQg+lKPmxrw==
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.3"
